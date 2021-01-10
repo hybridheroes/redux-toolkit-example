@@ -9,11 +9,12 @@ import {
 } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../store';
-import { fetchUsers } from '../store/users';
+import { fetchUsers, selectAllUsers } from '../store/users';
 
 const Users = () => {
   const dispatch = useDispatch();
-  const { users, loading } = useSelector((state: RootState) => state.users);
+  const { loading } = useSelector((state: RootState) => state.users);
+  const users = useSelector(selectAllUsers);
 
   useEffect(() => {
     dispatch(fetchUsers());
