@@ -3,7 +3,6 @@ import {
   StyleSheet,
   View,
   Text,
-  Image,
   ActivityIndicator,
   Button
 } from 'react-native';
@@ -30,18 +29,13 @@ const Users = () => {
       {users.map((user) => {
         return (
           <View style={styles.container} key={user.id}>
-            <Image source={{ uri: user.avatar }} style={styles.avatar} />
             <View>
               <View style={styles.dataContainer}>
-                <Text>Name: </Text>
-                <Text>{user.first_name}</Text>
+                <Text>
+                  {user.first_name} {user.last_name}
+                </Text>
               </View>
               <View style={styles.dataContainer}>
-                <Text>Last Name: </Text>
-                <Text>{user.last_name}</Text>
-              </View>
-              <View style={styles.dataContainer}>
-                <Text>Email: </Text>
                 <Text>{user.email}</Text>
               </View>
             </View>
@@ -65,10 +59,5 @@ const styles = StyleSheet.create({
   },
   dataContainer: {
     flexDirection: 'row'
-  },
-  avatar: {
-    width: 100,
-    height: 100,
-    marginRight: 10
   }
 });
