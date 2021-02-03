@@ -14,7 +14,7 @@ interface UserData {
 }
 
 export const fetchUsers = createAsyncThunk('users/fetchUsers', async () => {
-  const response = await fetch('https://reqres.in/api/users');
+  const response = await fetch('https://reqres.in/api/users?delay=1');
   return (await response.json()).data as UserData[];
 });
 
