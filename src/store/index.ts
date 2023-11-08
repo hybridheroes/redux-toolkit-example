@@ -5,8 +5,8 @@ import usersReducer from './users';
 export const store = configureStore({
   reducer: {
     message: messageReducer,
-    users: usersReducer
-  }
+    users: usersReducer,
+  },
 });
 
 export type AppDispatch = typeof store.dispatch;

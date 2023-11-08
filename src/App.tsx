@@ -24,6 +24,7 @@ export default App;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginHorizontal: 10
-  }
+    paddingHorizontal: 10,
+    backgroundColor: 'white',
+  },
 });

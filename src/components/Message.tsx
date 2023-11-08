@@ -1,12 +1,11 @@
 import React from 'react';
 import { View, Text, Button, StyleSheet } from 'react-native';
-import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../store';
+import { useAppDispatch, useAppSelector } from '../hooks';
 import { setMessage } from '../store/message';
 
 const Message = () => {
-  const dispatch = useDispatch();
-  const { message } = useSelector((state: RootState) => state.message);
+  const dispatch = useAppDispatch();
+  const { message } = useAppSelector(state => state.message);
 
   const handlePress = () => {
     dispatch(setMessage('Message from Component'));
@@ -26,9 +25,9 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   text: {
-    fontSize: 18
-  }
+    fontSize: 18,
+  },
 });

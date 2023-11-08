@@ -4,20 +4,18 @@ import {
   View,
   Text,
   ActivityIndicator,
-  Button
+  Button,
 } from 'react-native';
-import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../store';
-import { fetchUsers, selectAllUsers } from '../store/users';
+import { useAppDispatch, useAppSelector } from '../hooks';
+import { fetchUsers } from '../store/users';
 
 const Users = () => {
-  const dispatch = useDispatch();
-  const { loading } = useSelector((state: RootState) => state.users);
-  const users = useSelector(selectAllUsers);
+  const dispatch = useAppDispatch();
+  const { users, loading } = useAppSelector(state => state.users);
 
   useEffect(() => {
     dispatch(fetchUsers());
-  }, []);
+  }, [dispatch]);
 
   if (loading) {
     return <ActivityIndicator size="large" style={styles.loader} />;
@@ -26,7 +24,7 @@ const Users = () => {
   return (
     <View>
       <Button title={'Reload'} onPress={() => dispatch(fetchUsers())} />
-      {users.map((user) => {
+      {users.map(user => {
         return (
           <View style={styles.container} key={user.id}>
             <View>
@@ -51,13 +49,13 @@ export default Users;
 const styles = StyleSheet.create({
   loader: {
     marginTop: 'auto',
-    marginBottom: 'auto'
+    marginBottom: 'auto',
   },
   container: {
     flexDirection: 'row',
-    marginVertical: 10
+    marginVertical: 10,
   },
   dataContainer: {
-    flexDirection: 'row'
-  }
+    flexDirection: 'row',
+  },
 });
