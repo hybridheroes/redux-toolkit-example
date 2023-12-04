@@ -7,11 +7,12 @@ import {
   Button,
 } from 'react-native';
 import { useAppDispatch, useAppSelector } from '../hooks';
-import { fetchUsers } from '../store/users';
+import { fetchUsers, selectAllUsers } from '../store/users';
 
 const Users = () => {
   const dispatch = useAppDispatch();
-  const { users, loading } = useAppSelector(state => state.users);
+  const { loading } = useAppSelector(state => state.users);
+  const users = useAppSelector(selectAllUsers);
 
   useEffect(() => {
     dispatch(fetchUsers());
